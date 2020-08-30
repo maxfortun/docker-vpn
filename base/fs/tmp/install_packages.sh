@@ -26,7 +26,6 @@ echo "Installing packages"
 while read pkg; do
 	yum install -y $pkg
 done <<_EOT_
-	firewalld
 	openvpn
 	easy-rsa
 	openresolv
