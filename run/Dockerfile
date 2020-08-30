@@ -5,7 +5,8 @@ ARG LAST_LAYER
 
 FROM $REPO/$NAME-$LAST_LAYER:$VERSION
 
-COPY fs /
+VOLUME [ "/sys/fs/cgroup" ]
 
-RUN /tmp/configure_openvpn_certs.sh || exit $?
+EXPOSE 1194/udp
 
+CMD /usr/sbin/init

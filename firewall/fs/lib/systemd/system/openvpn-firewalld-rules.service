@@ -1,0 +1,8 @@
+[Unit]
+Description=OpenVPN firewalld rules
+After=firewalld.service
+
+[Service]
+Type=simple
+ExecStart=/etc/openvpn/server/update-openvpn-firewalld-rules.sh
+

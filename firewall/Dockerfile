@@ -7,5 +7,5 @@ FROM $REPO/$NAME-$LAST_LAYER:$VERSION
 
 COPY fs /
 
-RUN /tmp/configure_openvpn_certs.sh || exit $?
+RUN /tmp/configure_firewall.sh || exit $?
 
