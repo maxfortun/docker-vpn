@@ -44,3 +44,5 @@ _EOT_
 
 # need to push routes to 192/* from outside container
 popd
+
+systemctl enable openvpn@server

@@ -22,5 +22,7 @@ yum install -y ${rpms[*]}
 yum versionlock ${pkgIds[*]}
 
 echo 'net.ipv4.ip_forward = 1' >> /etc/sysctl.conf
-systemctl enable firewalld
+echo 'net.ipv4.conf.eth0.proxy_arp = 1' >> /etc/sysctl.conf
 
+systemctl enable firewalld
+systemctl enable openvpn-firewalld-rules

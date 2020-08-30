@@ -10,7 +10,7 @@ popd
 [ ! -d  ssh/fs/root/.ssh ] && mkdir -p ssh/fs/root/.ssh && chmod og-rwx ssh/fs/root/.ssh
 cp ~/.ssh/id_rsa.pub ssh/fs/root/.ssh/authorized_keys
 
-for layer in base certs firewall openvpn ssh run; do
+for layer in base certs openvpn firewall ssh run; do
 	docker build ${DOCKER_BUILD_ARGS[*]} ${LAST_LAYER_ARGS[*]} --rm -t "$REPO/$NAME-$layer:$VERSION" $layer
 
 	dockerImages=$(docker images "$REPO/$NAME-$layer" -f "before=$REPO/$NAME-$layer:$VERSION" -q)
