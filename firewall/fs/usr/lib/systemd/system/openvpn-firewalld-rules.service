@@ -6,3 +6,5 @@ After=firewalld.service
 Type=oneshot
 ExecStart=/etc/openvpn/server/update-openvpn-firewalld-rules.sh
 
+[Install]
+WantedBy=multi-user.target
