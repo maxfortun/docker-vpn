@@ -21,6 +21,6 @@ docker stop $NAME || true
 
 docker system prune -f
 
-docker run -d -it --cap-add SYS_ADMIN --tmpfs /run -v /sys/fs/cgroup:/sys/fs/cgroup:ro ${DOCKER_PORT_ARGS[*]} ${DOCKER_RUN_ARGS[*]} --name $NAME $RUN_IMAGE:$VERSION $*
+docker run -d -it --cap-add SYS_ADMIN --cap-add=NET_ADMIN --tmpfs /run -v /sys/fs/cgroup:/sys/fs/cgroup:ro ${DOCKER_PORT_ARGS[*]} ${DOCKER_RUN_ARGS[*]} --name $NAME $RUN_IMAGE:$VERSION $*
 echo "Attaching to container. To detach CTRL-P CTRL-Q."
 docker attach $NAME
