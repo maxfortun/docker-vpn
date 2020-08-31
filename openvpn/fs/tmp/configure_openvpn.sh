@@ -1,9 +1,6 @@
 #!/bin/bash -ex
 SWD=$(dirname $0)
 
-
-privateIp=$(ip a show eth0|grep -Po '(?<=inet )[^ /]*')
-
 cp /usr/share/doc/openvpn-*/sample/sample-config-files/server.conf /etc/openvpn/server/
 
 pushd /etc/openvpn/server/
@@ -44,4 +41,4 @@ mv dh.pem dh2048.pem
 popd
 
 systemctl enable openvpn-server@server
-systemctl enable openvpn-client-conf
+systemctl enable openvpn-local-conf
