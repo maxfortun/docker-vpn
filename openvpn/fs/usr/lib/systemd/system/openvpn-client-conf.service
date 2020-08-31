@@ -1,0 +1,10 @@
+[Unit]
+Description=OpenVPN client config
+After=openvpn-server@.service
+
+[Service]
+Type=oneshot
+ExecStart=/etc/openvpn/client/mkovpn.sh
+
+[Install]
+WantedBy=multi-user.target

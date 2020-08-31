@@ -46,5 +46,3 @@ popd
 
 systemctl enable openvpn-server@server
 
-/etc/openvpn/client/mkovpn.sh
-

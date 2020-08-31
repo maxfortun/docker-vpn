@@ -1,0 +1,29 @@
+client
+dev tun
+proto udp
+remote $OPENVPN_PUBLIC_IP 1194
+resolv-retry infinite
+nobind
+persist-key
+persist-tun
+comp-lzo
+verb 3
+float
+mute-replay-warnings
+
+
+<ca>
+$OPENVPN_CA
+</ca>
+
+<cert>
+$OPENVPN_CERT
+</cert>
+
+<key>
+$OPENVPN_KEY
+</key>
+
+<tls-auth>
+$OPENVPN_TLS_AUTH
+</tls-auth>
