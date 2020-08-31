@@ -1,7 +1,7 @@
 client
 dev tun
 proto udp
-remote $OPENVPN_PUBLIC_IP 1194
+remote $OPENVPN_PUBLIC_IP $OPENVPN_PUBLIC_PORT
 resolv-retry infinite
 nobind
 persist-key

@@ -3,7 +3,6 @@ SWD=$(dirname $0)
 
 
 privateIp=$(ip a show eth0|grep -Po '(?<=inet )[^ /]*')
-publicIp=$(dig +short myip.opendns.com @resolver1.opendns.com || dig -4 TXT +short o-o.myaddr.l.google.com @ns1.google.com | awk -F'"' '{ print $2}')
 
 cp /usr/share/doc/openvpn-*/sample/sample-config-files/server.conf /etc/openvpn/server/
 

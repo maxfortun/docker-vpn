@@ -17,12 +17,16 @@ while read port; do
 	DOCKER_PORT_ARGS+=( -p $hostPort:$port )
 done < <(docker image inspect -f '{{json .Config.ExposedPorts}}' $imageId|jq -r 'keys[]')
 
-docker stop $NAME || true
 
-docker system prune -f
+OPENVPN_PUBLIC_PORT=${DOCKER_PORT_PREFIX}1194
+[ ${#OPENVPN_PUBLIC_PORT} -gt 5 ] &&OPENVPN_PUBLIC_PORT=${OPENVPN_PUBLIC_PORT:${#OPENVPN_PUBLIC_PORT}-5}
 
 DOCKER_RUN_ARGS+=( -e container=docker )
+DOCKER_RUN_ARGS+=( -e OPENVPN_PUBLIC_PORT=$OPENVPN_PUBLIC_PORT )
 
+docker stop $NAME || true
+docker system prune -f
 docker run -d -it --privileged --cap-add=NET_ADMIN --cap-add=MKNOD --tmpfs /run -v /sys/fs/cgroup:/sys/fs/cgroup:ro ${DOCKER_PORT_ARGS[*]} ${DOCKER_RUN_ARGS[*]} --name $NAME $RUN_IMAGE:$VERSION $*
+
 echo "Attaching to container. To detach CTRL-P CTRL-Q."
 docker attach $NAME

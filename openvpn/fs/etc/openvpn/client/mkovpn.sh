@@ -4,6 +4,12 @@ SWD=$(dirname $0)
 
 pushd $SWD
 
+# Import our environment variables from systemd
+for e in $(tr "\000" "\n" < /proc/1/environ); do
+	eval "export $e"
+done
+
+export OPENVPN_PUBLIC_IP=$(dig +short myip.opendns.com @resolver1.opendns.com || dig -4 TXT +short o-o.myaddr.l.google.com @ns1.google.com | awk -F'"' '{ print $2}')
 export OPENVPN_CA=$(cat ca.crt)
 export OPENVPN_CERT=$(cat ${name}.crt)
 export OPENVPN_KEY=$(cat ${name}.key)
