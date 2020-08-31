@@ -26,6 +26,10 @@ echo "Installing packages"
 while read pkg; do
 	yum install -y $pkg
 done <<_EOT_
+	rsyslog
+	openssh-server
+	openssh-clients
+	bind-utils
 	openvpn
 	easy-rsa
 	openresolv

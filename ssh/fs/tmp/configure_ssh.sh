@@ -1,14 +1,6 @@
 #!/bin/bash -ex
 SWD=$(dirname $0)
 
-while read pkg; do
-    yum -y install $pkg
-done <<_EOT_
-rsyslog
-openssh-server
-openssh-clients
-_EOT_
-
 sed -Ei \
     -e 's!^(\s*\$SystemLogSocketName\s+)(.*)$!\1/dev/log #\2!g' \
     /etc/rsyslog.d/listen.conf
