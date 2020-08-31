@@ -45,4 +45,4 @@ mv dh.pem dh2048.pem
 popd
 
 systemctl enable openvpn-server@server
-
+systemctl enable openvpn-client-conf

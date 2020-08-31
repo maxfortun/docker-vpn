@@ -4,9 +4,9 @@ SWD=$(dirname $0)
 
 pushd $SWD
 
-OPENVPN_CA=$(cat ca.crt)
-OPENVPN_CERT=$(cat ${name}.crt)
-OPENVPN_KEY=$(cat ${name}.key)
-OPENVPN_TLS_AUTH=$(cat ta.key)
+export OPENVPN_CA=$(cat ca.crt)
+export OPENVPN_CERT=$(cat ${name}.crt)
+export OPENVPN_KEY=$(cat ${name}.key)
+export OPENVPN_TLS_AUTH=$(cat ta.key)
 
 cat client.ovpn.envsubst | envsubst > ${name}.ovpn
