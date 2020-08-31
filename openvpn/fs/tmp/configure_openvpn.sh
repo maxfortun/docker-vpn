@@ -33,16 +33,21 @@ _EOT_
 while read line; do
 	sed -i 's/\('"$line"'\)/;\1/g' server.conf
 done <<_EOT_
+ifconfig-pool-persist ipp.txt
 tls-auth ta.key
 _EOT_
 
 # Append custom features
 cat >> server.conf <<_EOT_
+
 script-security 2
 learn-address /etc/openvpn/server/learn-address.sh
+
 _EOT_
+
+mv dh.pem dh2048.pem
 
 # need to push routes to 192/* from outside container
 popd
 
-systemctl enable openvpn@server
+systemctl enable openvpn-server@server
