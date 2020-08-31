@@ -1,6 +1,7 @@
 [Unit]
 Description=OpenVPN firewalld rules
 After=firewalld.service
+Before=openvpn@server.service
 
 [Service]
 Type=oneshot
