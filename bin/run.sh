@@ -3,7 +3,6 @@
 pushd "$(dirname $0)"
 SWD=$(pwd)
 BWD=$(dirname "$SWD")
-popd
 
 . $SWD/setenv.sh
 
@@ -26,9 +25,11 @@ DOCKER_RUN_ARGS+=( -e container=docker )
 DOCKER_RUN_ARGS+=( -e OPENVPN_PUBLIC_PORT=$OPENVPN_PUBLIC_PORT )
 DOCKER_RUN_ARGS+=( -e "OPENVPN_PRIVATE_SUBNETS=$OPENVPN_PRIVATE_SUBNETS" )
 
+[ -d $SWD/sharedfs ] || mkdir $SWD/sharedfs
+
 docker stop $NAME || true
 docker system prune -f
-docker run -d -it --privileged --cap-add=NET_ADMIN --cap-add=MKNOD --tmpfs /run -v /sys/fs/cgroup:/sys/fs/cgroup:ro ${DOCKER_PORT_ARGS[*]} "${DOCKER_RUN_ARGS[@]}" --name $NAME $RUN_IMAGE:$VERSION $*
+docker run -d -it --privileged --cap-add=NET_ADMIN --cap-add=MKNOD --tmpfs /run -v /sys/fs/cgroup:/sys/fs/cgroup:ro -v $SWD/sharedfs:/mnt/sharedfs ${DOCKER_PORT_ARGS[*]} "${DOCKER_RUN_ARGS[@]}" --name $NAME $RUN_IMAGE:$VERSION $*
 
 echo "Attaching to container. To detach CTRL-P CTRL-Q."
 docker attach $NAME

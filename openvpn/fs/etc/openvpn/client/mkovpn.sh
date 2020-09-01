@@ -16,3 +16,4 @@ export OPENVPN_KEY=$(cat ${name}.key)
 export OPENVPN_TLS_AUTH=$(cat ta.key)
 
 cat client.ovpn.envsubst | envsubst > ${name}.ovpn
+[ -d /mnt/sharedfs ] && cp ${name}.ovpn /mnt/sharedfs/
