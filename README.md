@@ -1,6 +1,8 @@
 # docker-vpn-in
 
-Inbound OpenVPN server to allow connections to a private network.
+Inbound OpenVPN server to allow connections to a private network.  
+
+Tested this on Macs only. Use at your own peril.
 
 ## Terminology
 
