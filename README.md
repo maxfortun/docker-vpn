@@ -20,7 +20,7 @@ To run: [bin/run.sh](bin/run.sh).
 
 ## Port forwarding
 By default `container` will come up and OpenVPN will be running on a port 31194 of the `host`.  
-In order to be able to connect to the container a port forwarding rule needs to be added to the `gateway`.  
+In order to be able to connect to the OpenVPN from the internet a port forwarding rule needs to be added to the `gateway`.  
 `gateway:31194` --> `host:31194`.
 
 If you need to change the port prefix, you can do it in [bin/setenv.sh](bin/setenv.sh).
