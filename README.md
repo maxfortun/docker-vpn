@@ -12,8 +12,10 @@ Tested this on Macs only. Use at your own peril.
 |host| Computer where `container` is running. It has its own private ip address which is not visible from the internet.|
 |container| Container is running on a `host` and it has internal ips that are not accessible from either the `host` or the internet. |
 
-## Building
+## Prerequisites
+You will need [Docker](https://www.docker.com) to build and run this.  
 
+## Building
 To build: [bin/build.sh](bin/build.sh).
 
 ## Running
