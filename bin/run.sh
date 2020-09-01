@@ -21,7 +21,7 @@ done < <(docker image inspect -f '{{json .Config.ExposedPorts}}' $imageId|jq -r 
 OPENVPN_PUBLIC_PORT=${DOCKER_PORT_PREFIX}1194
 [ ${#OPENVPN_PUBLIC_PORT} -gt 5 ] &&OPENVPN_PUBLIC_PORT=${OPENVPN_PUBLIC_PORT:${#OPENVPN_PUBLIC_PORT}-5}
 
-OPENVPN_PRIVATE_SUBNETS=$(ifconfig -a|egrep 'inet (10|172.16|192.168)'|awk '{print $6, $4}' | tr '[a-f]' '[A-F]' | while read subnet netmask; do netmask=${netmask#0x}; netmask=$(dc -e 16i2o${netmask}p); netmask=${netmask%%0*}; echo $subnet/${#netmask}; done)
+OPENVPN_PRIVATE_SUBNETS=$(ifconfig -a|egrep 'inet (10|172.16|192.168)'|awk '{print $6, $4}' | tr '[a-f]' '[A-F]' | while read subnet netmask; do netmask=${netmask#0x}; netmask=$(dc -e 16i2o${netmask}p); netmask=${netmask%%0*}; echo $subnet/${#netmask}; done|xargs)
 DOCKER_RUN_ARGS+=( -e container=docker )
 DOCKER_RUN_ARGS+=( -e OPENVPN_PUBLIC_PORT=$OPENVPN_PUBLIC_PORT )
 DOCKER_RUN_ARGS+=( -e "OPENVPN_PRIVATE_SUBNETS=$OPENVPN_PRIVATE_SUBNETS" )

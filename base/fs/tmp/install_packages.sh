@@ -30,6 +30,7 @@ done <<_EOT_
 	openssh-server
 	openssh-clients
 	bind-utils
+	sipcalc
 	openvpn
 	easy-rsa
 	openresolv
