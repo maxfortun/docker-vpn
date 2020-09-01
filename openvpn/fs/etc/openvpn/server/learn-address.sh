@@ -10,7 +10,7 @@ if [ -z "$address" ]; then
 	exit
 fi
 
-LOG=/var/run/openvpn-server/learn-address.log
+LOG=/tmp/learn-address.log
 
 echo $(date '+%Y-%m-%d %H:%M:%S') $* >> $LOG
 env | sort | xargs -L 1 echo $(date '+%Y-%m-%d %H:%M:%S') $address >> $LOG
