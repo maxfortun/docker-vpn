@@ -10,7 +10,7 @@ comp-lzo
 verb 3
 float
 mute-replay-warnings
-
+key-direction 1
 
 <ca>
 $OPENVPN_CA
