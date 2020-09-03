@@ -49,4 +49,4 @@ popd
 
 systemctl enable openvpn-server@server
 systemctl enable openvpn-local-conf
-systemctl enable openvpn-client@out
+
