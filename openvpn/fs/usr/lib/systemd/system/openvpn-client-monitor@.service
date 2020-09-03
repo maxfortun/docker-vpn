@@ -6,7 +6,7 @@ StartLimitBurst=5
 
 [Service]
 Type=oneshot
-ExecStart=/usr/bin/systemctl restart openvpn-client@.service
+ExecStart=/usr/bin/systemctl restart openvpn-client@out.service
 
 [Install]
 WantedBy=multi-user.target
