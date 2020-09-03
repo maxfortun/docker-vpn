@@ -27,6 +27,8 @@ while read pkg; do
 	yum install -y $pkg
 done <<_EOT_
 	rsyslog
+	sudo
+	which
 	openssh-server
 	openssh-clients
 	bind-utils

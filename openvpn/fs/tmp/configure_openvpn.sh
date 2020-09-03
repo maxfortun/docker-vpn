@@ -23,6 +23,7 @@ duplicate-cn
 comp-lzo
 user nobody
 group nobody
+push "redirect-gateway def1 bypass-dhcp"
 _EOT_
 
 # Comment undesired features
