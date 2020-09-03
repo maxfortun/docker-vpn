@@ -32,11 +32,11 @@ If you need to change the port prefix, you can do it in [bin/setenv.sh](bin/sete
 
 ## Connecting
 
-Once container is up it will produce OpenVPN client configuration: `sharedfs/client.ovpn`.  
+Once container is up it will produce OpenVPN client configuration: `sharedfs/client-in.ovpn`.  
 
 [Connection instructions](https://openvpn.net/vpn-server-resources/#documentation-subtab-connecting).
 
-Please remember, client.ovpn changes on every build. 
+Please remember, client-in.ovpn changes on every build. 
 
 ## Troubleshooting
 

@@ -1,0 +1,6 @@
+[Path]
+Unit=openvpn-client-monitor@.service
+PathChanged=/etc/openvpn/client/*.conf
+
+[Install]
+WantedBy=multi-user.target

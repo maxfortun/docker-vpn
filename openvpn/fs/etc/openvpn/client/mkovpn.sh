@@ -2,6 +2,8 @@
 name=client$1
 SWD=$(dirname $0)
 
+[ ! -f /mnt/sharedfs/{$name}.ovpn ] || exit
+
 pushd $SWD
 
 # Import our environment variables from systemd

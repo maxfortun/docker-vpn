@@ -5,4 +5,4 @@ pushd $SWD
 
 server/push_private_routes.sh
 
-client/mkovpn.sh
+client/mkovpn.sh -in
