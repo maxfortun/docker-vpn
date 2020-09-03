@@ -42,9 +42,9 @@ Please remember, client-in.ovpn changes on every build.
 
 ## Chaining
 
-Place OpenVPN client config file named `client-out.conf`  into `sharedfs/`.  
-`sharedfs/` is mounted internally as `/mnt/sharedfs/`. 
-Make sure that paths in the client config are absolute and have `/mnt/sharedfs` prefix.
+Place OpenVPN client config file named `client-out.conf`  into `sharedfs/`.   
+`sharedfs/` is mounted internally as `/mnt/sharedfs/`.  
+Make sure that paths in the client config are absolute and have `/mnt/sharedfs` prefix. 
 e.g.:
 ```
 auth-user-pass /mnt/sharedfs/client-out-user-pass.txt
