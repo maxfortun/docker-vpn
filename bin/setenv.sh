@@ -1,5 +1,5 @@
 REPO=local
-NAME=vpn-in
+NAME=vpn
 VERSION=0.0.1
 
 DOCKER_PORT_PREFIX=33
