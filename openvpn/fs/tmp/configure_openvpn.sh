@@ -1,6 +1,11 @@
 #!/bin/bash -ex
 SWD=$(dirname $0)
 
+if [ ! -d /var/log/openvpn ]; then
+	mkdir -p /var/log/openvpn
+	chown nobody:nobody /var/log/openvpn
+fi
+
 cp /usr/share/doc/openvpn-*/sample/sample-config-files/server.conf /etc/openvpn/server/
 
 pushd /etc/openvpn/server/
@@ -32,6 +37,7 @@ cat >> server.conf <<_EOT_
 
 script-security 2
 learn-address /etc/openvpn/server/learn-address.sh
+log /var/log/openvpn/server.log
 
 _EOT_
 

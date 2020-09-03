@@ -7,8 +7,10 @@ popd
 
 . $SWD/setenv.sh
 
-[ ! -d  ssh/fs/root/.ssh ] && mkdir -p ssh/fs/root/.ssh && chmod og-rwx ssh/fs/root/.ssh
-cp ~/.ssh/id_rsa.pub ssh/fs/root/.ssh/authorized_keys
+if [ -f ~/.ssh/id_rsa.pub ]; then
+	[ ! -d  ssh/fs/root/.ssh ] && mkdir -p ssh/fs/root/.ssh && chmod og-rwx ssh/fs/root/.ssh
+	cp ~/.ssh/id_rsa.pub ssh/fs/root/.ssh/authorized_keys
+fi
 
 for layer in base certs openvpn firewall ssh run; do
 	docker build ${DOCKER_BUILD_ARGS[*]} ${LAST_LAYER_ARGS[*]} --rm -t "$REPO/$NAME-$layer:$VERSION" $layer
