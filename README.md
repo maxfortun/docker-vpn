@@ -1,6 +1,8 @@
 # docker-vpn-in
 
-Inbound OpenVPN server to allow connections to a private network.  
+OpenVPN server.
+
+Allows connections to a private network and/or chains to another VPN.  
 
 Tested this on Macs only. Use at your own peril.
 
@@ -37,6 +39,13 @@ Once container is up it will produce OpenVPN client configuration: `sharedfs/cli
 [Connection instructions](https://openvpn.net/vpn-server-resources/#documentation-subtab-connecting).
 
 Please remember, client-in.ovpn changes on every build. 
+
+## Chaining
+
+Place OpenVPN client config file named `client-out.conf`  into `sharedfs`.  
+`sharedfs` is mounted internally as `/mnt/sharedfs`. Make sure that paths in the config are absolute and have `/mnt/sharedfs` prefix.
+
+All traffic will be routed out through this chained VPN. 
 
 ## Troubleshooting
 
